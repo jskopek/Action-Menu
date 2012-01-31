@@ -37,5 +37,7 @@ var actions = [{
 }]
 
 $(document).ready(function() {
-    $("#menu").actionmenu(actions);
+    $("#menu").actionmenu({
+        "actions": actions
+    });
 });
