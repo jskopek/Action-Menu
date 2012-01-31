@@ -1,23 +1,22 @@
 /* tree status */
-.actionmenubutton .options {
+.actionmenu_button .options {
 	display: none;
 }
-.status_list .options {
+.actionmenu_popup .options {
     width: 100%;
 }
-.actionmenubutton div.option {
-	background-repeat: no-repeat;
-}
-.actionmenubutton span div.option {
+.actionmenu_button span div.option {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	text-indent: 8000px;
+	text-indent: -8000px;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
-.actionmenubutton span.modifiable:hover {
+.actionmenu_button span.modifiable:hover {
 	background-color: #cfcecd;
 }
-.actionmenubutton span.modifiable {	
+.actionmenu_button span.modifiable {	
 	display: inline-block;
 	border: 1px solid #aaa;
 	border: 1px solid #aaa;	
@@ -27,13 +26,13 @@
 	background: center right no-repeat url(images/status_picker.png);
 	
 }
-.actionmenubutton span.modifiable,
-.status_list .option {
+.actionmenu_button span.modifiable,
+.actionmenu_popup .option {
 	cursor: pointer;
 }
 
-/* status_list */
-.status_list {
+/* actionmenu */
+.actionmenu_popup {
 	position: absolute;
 	z-index: 10000;
 	background: #fdfdfd;
@@ -44,7 +43,7 @@
 	border: 1px solid #aaa;
     width: 300px;
 }
-.status_list span.close {
+.actionmenu_popup span.close {
 	position: absolute;
 	top: 3px;
 	right: 3px;
@@ -53,7 +52,7 @@
 	height: 16px;
 	background-image: url(images/bt_close.png);
 }
-.status_list div.option  {
+.actionmenu_popup div.option  {
 	background-repeat: no-repeat;
 	display: block;
 	text-align: left;
@@ -64,16 +63,16 @@
 	text-decoration: none;
 	color: #000;
 }
-.status_list div.option span {
+.actionmenu_popup div.option span {
 	font-size: 0.9em;
 	color: #787878;
 	padding-left: 4px;
 }
-.status_list .group:first-child {
+.actionmenu_popup .group:first-child {
 	-webkit-border-radius: 5px 5px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
 }
-.status_list .group {
+.actionmenu_popup .group {
 	padding: 5px;
 	background: #bababa;
 	background: -webkit-gradient(linear, center top, center bottom, from(#e2e2e2), to(#bababa));
@@ -82,100 +81,29 @@
 	font-weight: normal;
 	font-family: Futura;
 }
-.status_list div.option.current {
+.actionmenu_popup div.option.current {
 	background-color: #c2daed;
 }
-.status_list div.option:hover {
+.actionmenu_popup div.option:hover {
 	background-color: #cee7fb;
 }
 
 /* status icons */
-.actionmenubutton .option[status='active_visible'],
-.actionmenubutton .option[status='active'],
-.actionmenubutton .option[status='inactive'],
-.actionmenubutton .option[status='review'],
-.actionmenubutton .option[status='mixed'] {
-	text-indent: -5000px;
-	height: 16px;
-	width: 16px;
-	background-repeat: no-repeat;
-	background-position: center center;
-}
-.status .option,
-.status_list .option,
-.actionmenubutton .option {
-	background-image: url(images/status_inactive.png);
-}
-.status_list .option[status='visible'],
-.status .option[status='visible'],
-.actionmenubutton .option[status='visible'] {
-	background-image: url(images/status_visible.png);
-}
-.status_list .option[status='active_visible'],
-.status .option[status='active_visible'],
-.actionmenubutton .option[status='active_visible'] {
-	background-image: url(images/status_active_visible_7.png);
-}
-.status_list .duplicate {
-	background-image: url(images/status_duplicate.png);
-}
-.status_list .answers {
-	background-image: url(images/status_answers.png);
-}
-.status_list .preview {
-	background-image: url(images/thm_tree/icon_item.png);
-}
-.status .option[status='active'],
-.status_list .option[status='active'],
-.actionmenubutton .option[status='active'] {
-	background-image: url(images/status_active.png);
-}
-.status .option[status='inactive'],
-.status_list .option[status='inactive'],
-.actionmenubutton .option[status='inactive'] {
-	background-image: url(images/status_inactive.png);
-}
-.status_list .option[status='review'],
-.status .option[status='review'],
-.actionmenubutton .option[status='review']
- {
-	background-image: url(images/status_reviewable.png);
-}
-.status .option[status='mixed'],
-.actionmenubutton .option[status='mixed'] {
-	background-image: url(images/status_mixed.png);
-}
-.status .option[status='password'] {
-	background-image: url(images/status_password.png);
-}
-.status .option[status='none'] {
-	background-image: none;
-}
+.actionmenu .option { background-image: url(images/status_inactive.png); }
+.actionmenu .option[status='visible'] { background-image: url(images/status_visible.png); }
+.actionmenu .option[status='active_visible'] { background-image: url(images/status_active_visible_7.png); }
+.actionmenu .option[status='active'] { background-image: url(images/status_active.png); }
+.actionmenu .option[status='inactive'] { background-image: url(images/status_inactive.png); }
+.actionmenu .option[status='review'] { background-image: url(images/status_reviewable.png); }
+.actionmenu .option[status='mixed'] { background-image: url(images/status_mixed.png); }
+.actionmenu .option[status='password'] { background-image: url(images/status_password.png); }
+.actionmenu .option[status='on'] { background-image: url(images/on.png); }
+.actionmenu .option[status='off'] { background-image: url(images/off.png); }
+.actionmenu .option[status='duplicate'] { background-image: url(images/status_duplicate.png); }
+.actionmenu .option[status='answers'] { background-image: url(images/status_answers.png); }
+.actionmenu .option[status='preview'] { background-image: url(images/thm_tree/icon_item.png); }
+.actionmenu .option[status='edit'] { background-image: url(images/status_edit.png); }
+.actionmenu .option[status='delete'] { background-image: url(images/status_delete.png); }
+.actionmenu .option.loading { background-image: url(images/status_loading.gif) !important; }
 
-.status .loading,
-.actionmenubutton .option.loading {
-	background-image: url(images/status_loading.gif) !important;	
-}
-.thm_tree > div.item[answered='true'] .status div[status='review'] {
-	background-image: url(images/status_review_answered.png);
-}
-.thm_tree > div.item[answered='true'] .status div[status='active_visible'],
-.thm_tree > div.item[answered='true'] .status div[status='active'] {
-	background-image: url(images/status_active_answered.png);
-}
-.status_list .edit {
-	background-image: url(images/status_edit.png);
-}
-.status_list .delete {
-	background-image: url(images/status_delete.png);
-}
-.status .option[status='on'],
-.status_list .option[status='on'],
-.actionmenubutton .option[status='on'] {
-	background-image: url(images/on.png);
-}
-.status .option[status='off'],
-.status_list .option[status='off'],
-.actionmenubutton .option[status='off'] {
-	background-image: url(images/off.png);
-}
+

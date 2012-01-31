@@ -16,7 +16,7 @@
                 var bt_el = $(this).find("div.option");
 
                 //removes any other status lists
-                $(".status_list").remove();
+                $(".actionmenu_popup").remove();
 
                 //hide the hover options
                 /*var el = bt_el.parents(".status").find(".options");*/
@@ -25,7 +25,7 @@
                 /*bt_el.parents(".status").find(".options").hide();*/
 
                 //create popup
-                var template = _.template("<div class='status_list'>" +
+                var template = _.template("<div class='actionmenu actionmenu_popup'>" +
                         "<div class='options'>" +
                             "<span class='close'>x</span>" +
                                     "<% _.each(action_groups, function(group) { %>" +
@@ -38,12 +38,12 @@
                 "</div>");
 
                 var status_list_html = template({ "action_groups": this.options.actions });
-                var status_list = $(status_list_html);
+                var actionmenu = $(status_list_html);
 
                 var top_pos = bt_el.offset().top, left_pos = bt_el.offset().left
-                status_list.css("top", top_pos);
-                status_list.css("left", left_pos);
-                $("body").append(status_list);
+                actionmenu.css("top", top_pos);
+                actionmenu.css("left", left_pos);
+                $("body").append(actionmenu);
                 
 
                 //calculate if the popup dialog is off screen; if so, move it up until it is on screen
@@ -51,7 +51,7 @@
                 //the status_list_bottom_pos is calculated relative to the top of the window, not the document
                 //i.e. the scrollbar position should not affect the status_list_bottom_pos value
                 //add 5px buffer
-                var status_list_bottom_pos = $(status_list).height() + $(status_list).offset().top - $(window).scrollTop() + 5;
+                var status_list_bottom_pos = $(actionmenu).height() + $(actionmenu).offset().top - $(window).scrollTop() + 5;
                 var num_offscreen_pixels = status_list_bottom_pos - $(window).height();
                 if( num_offscreen_pixels > 0 ) {
                     top_pos -= num_offscreen_pixels;
@@ -61,14 +61,14 @@
                         top_pos = $(window).scrollTop();
                     }
 
-                    status_list.css("top", top_pos);
+                    actionmenu.css("top", top_pos);
                 }
 
                 //highlight current status
-                status_list.find("[status=" + this.options.current_action + "]").addClass('current');
+                actionmenu.find("[status=" + this.options.current_action + "]").addClass('current');
 
                 //trigger status change event when user clicks status element
-                $(status_list).find("div.option").bind('click', $.proxy(function(e) {
+                $(actionmenu).find("div.option").bind('click', $.proxy(function(e) {
                     e.preventDefault();
                     e.stopPropagation();
 
@@ -79,19 +79,17 @@
                     this.trigger("leave");
                 }, this));
 
-                this.bind("leave", function() { $(".status_list").remove(); });
+                this.bind("leave", function() { $(".actionmenu_popup").remove(); });
                 $(window).bind("click",$.proxy(function(event) { this.trigger("leave"); }, this));
-
-
             }           
 
             this.render_current_action = function() {
-                var el = $(this).find(".option").removeClass().addClass("option");
-                if( this.options.current_action ) { el.addClass( this.options.current_action ); }
+                var el = $(this).find(".option");
+                if( this.options.current_action ) { el.attr("status", this.options.current_action ); }
             }
 
             //initialize
-            $(this).addClass("actionmenubutton");
+            $(this).addClass("actionmenu actionmenu_button");
             $(this).html("<span class='" + (this.options.actions.length ? "modifiable" : "") +"'>" +
                     "<div href='#' class='option'>Actions</div>" +
                     "</span>");
