@@ -38,6 +38,7 @@ var actions = [{
 
 $(document).ready(function() {
     $("#menu").actionmenu({
-        "actions": actions
+        "actions": actions,
+        "current_action": "active_visible"
     });
 });

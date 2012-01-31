@@ -90,11 +90,11 @@
 }
 
 /* status icons */
-.thm_tree_table_sec_icon[status='active_visible'],
-.thm_tree_table_sec_icon[status='active'],
-.thm_tree_table_sec_icon[status='inactive'],
-.thm_tree_table_sec_icon[status='review'],
-.thm_tree_table_sec_icon[status='mixed'] {
+.actionmenubutton .option[status='active_visible'],
+.actionmenubutton .option[status='active'],
+.actionmenubutton .option[status='inactive'],
+.actionmenubutton .option[status='review'],
+.actionmenubutton .option[status='mixed'] {
 	text-indent: -5000px;
 	height: 16px;
 	width: 16px;
@@ -103,17 +103,17 @@
 }
 .status .option,
 .status_list .option,
-.thm_tree_table_sec_icon {
+.actionmenubutton .option {
 	background-image: url(images/status_inactive.png);
 }
 .status_list .option[status='visible'],
 .status .option[status='visible'],
-.thm_tree_table_sec_icon[status='visible'] {
+.actionmenubutton .option[status='visible'] {
 	background-image: url(images/status_visible.png);
 }
 .status_list .option[status='active_visible'],
 .status .option[status='active_visible'],
-.thm_tree_table_sec_icon[status='active_visible'] {
+.actionmenubutton .option[status='active_visible'] {
 	background-image: url(images/status_active_visible_7.png);
 }
 .status_list .duplicate {
@@ -127,22 +127,22 @@
 }
 .status .option[status='active'],
 .status_list .option[status='active'],
-.thm_tree_table_sec_icon[status='active'] {
+.actionmenubutton .option[status='active'] {
 	background-image: url(images/status_active.png);
 }
 .status .option[status='inactive'],
 .status_list .option[status='inactive'],
-.thm_tree_table_sec_icon[status='inactive'] {
+.actionmenubutton .option[status='inactive'] {
 	background-image: url(images/status_inactive.png);
 }
 .status_list .option[status='review'],
 .status .option[status='review'],
-.thm_tree_table_sec_icon[status='review']
+.actionmenubutton .option[status='review']
  {
 	background-image: url(images/status_reviewable.png);
 }
 .status .option[status='mixed'],
-.thm_tree_table_sec_icon[status='mixed'] {
+.actionmenubutton .option[status='mixed'] {
 	background-image: url(images/status_mixed.png);
 }
 .status .option[status='password'] {
@@ -153,7 +153,7 @@
 }
 
 .status .loading,
-.thm_tree_table_sec_icon.loading {
+.actionmenubutton .option.loading {
 	background-image: url(images/status_loading.gif) !important;	
 }
 .thm_tree > div.item[answered='true'] .status div[status='review'] {
@@ -171,11 +171,11 @@
 }
 .status .option[status='on'],
 .status_list .option[status='on'],
-.thm_tree_table_sec_icon[status='on'] {
+.actionmenubutton .option[status='on'] {
 	background-image: url(images/on.png);
 }
 .status .option[status='off'],
 .status_list .option[status='off'],
-.thm_tree_table_sec_icon[status='off'] {
+.actionmenubutton .option[status='off'] {
 	background-image: url(images/off.png);
 }

@@ -11,6 +11,7 @@
 
             this.launch_menu = function(e) {
                 e.preventDefault();
+                e.stopPropagation();
 
                 var bt_el = $(this).find("div.option");
 
@@ -66,62 +67,37 @@
                 //highlight current status
                 status_list.find("[status=" + this.options.current_action + "]").addClass('current');
 
-                /*//hack to hide duplicate button from status list*/
-                /*if( item.is_label() ) {*/
+                //trigger status change event when user clicks status element
+                $(status_list).find("div.option").bind('click', $.proxy(function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                /*//this is the worst hack i've ever written, but it's 3am - marc*/
-                /*if( item.get("list") ) {*/
-                /*var module_name = $(item.get("list").elem).attr("status_list_name");*/
-                /*if( module_name == "feedback" ) { status_list.find(".options .visible").hide(); status_list.find(".options .active").hide(); status_list.find(".options .review").hide(); }*/
-                /*}*/
+                    var action = $(e.currentTarget).attr("status");
+                    this.options.current_action = action;
+                    this.trigger("actionmenuchanged", action);
 
-                /*status_list.find(".options .duplicate").hide()*/
-                /*status_list.find(".options .answers").hide()*/
-                /*}*/
+                    this.trigger("leave");
+                }, this));
 
-                /*//trigger status change event when user clicks status element*/
-                /*$(status_list).find("div.option").unbind("click").bind('click', function(e) {*/
-
-                /*var status = $(this).attr("status");*/
-
-                /*// list.trigger("status_clicked", status, item, list);*/
-                /*// list.trigger("status_clicked." + status, item, list);*/
+                this.bind("leave", function() { $(".status_list").remove(); });
+                $(window).bind("click",$.proxy(function(event) { this.trigger("leave"); }, this));
 
 
-                /*//if the option is a status change, change the item status*/
-                /*if( _.indexOf(['active','active_visible','visible','review','inactive'], status) >= 0 ) {*/
-                /*item.set({status: status});*/
-                /*}*/
-
-                /*$(status_list).trigger("leave");*/
-
-                /*item.trigger("status_clicked", status, item, list);*/
-
-                /*return false;*/
-                /*});*/
-
-                /*status_list.bind("leave", function() {*/
-                /*$(".status_list").remove();*/
-                /*});*/
-
-                /*$("body").click(function(event) {*/
-                /*status_list.trigger("leave");*/
-                /*bt_el.unbind(event);*/
-                /*});*/
-                /*$(this).click(function(event) {*/
-                /*event.stopPropagation();*/
-                /*});*/
-
-                /*item.trigger("status_list_added");*/
             }           
 
-            this.initialize = function() {
-                $(this).addClass("actionmenubutton");
-                $(this).html("<span class='" + (this.options.actions.length ? "modifiable" : "") +"'>" +
-                        "<div href='#' class='option' status='" + this.options.current_action + "'>" + (this.options.current_action || "Actions") + "</div>" +
-                        "</span>");
-            };
-            this.initialize();
+            this.render_current_action = function() {
+                var el = $(this).find(".option").removeClass().addClass("option");
+                if( this.options.current_action ) { el.addClass( this.options.current_action ); }
+            }
+
+            //initialize
+            $(this).addClass("actionmenubutton");
+            $(this).html("<span class='" + (this.options.actions.length ? "modifiable" : "") +"'>" +
+                    "<div href='#' class='option'>Actions</div>" +
+                    "</span>");
+
+            this.render_current_action();
+            $(this).bind("actionmenuchanged", $.proxy(this.render_current_action, this));
 
             $(this).bind('click', $.proxy(this.launch_menu, this));
         }
