@@ -1,6 +1,16 @@
 (function($) {
     $.fn.extend({
-        "actionmenu": function(options) {
+        "actionmenu": function(options, key, value) {
+
+            //user can specify complete set of options ({ 'actions': ...., 'current_action': ... })
+            //or may update a sepcific option in the following fashion
+            //$().actionmenu("option", "current_action", "edit");
+            if( options == "option" ) {
+                var options = this.data("actionmenu").options;
+                options[key] = value;
+                this.trigger("actionmenuchanged", options.current_action);
+                return true;
+            }
 
             //set up default options
             this.options = $.extend({
@@ -13,16 +23,8 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                var bt_el = $(this).find("div.option");
-
                 //removes any other status lists
                 $(".actionmenu_popup").remove();
-
-                //hide the hover options
-                /*var el = bt_el.parents(".status").find(".options");*/
-                /*$list_el.find(".item").removeClass("hovered");*/
-                /*el.parents(".item").addClass("hovered");*/
-                /*bt_el.parents(".status").find(".options").hide();*/
 
                 //create popup
                 var template = _.template("<div class='actionmenu actionmenu_popup'>" +
@@ -40,7 +42,7 @@
                 var status_list_html = template({ "action_groups": this.options.actions });
                 var actionmenu = $(status_list_html);
 
-                var top_pos = bt_el.offset().top, left_pos = bt_el.offset().left
+                var top_pos = $(this).offset().top, left_pos = $(this).offset().left
                 actionmenu.css("top", top_pos);
                 actionmenu.css("left", left_pos);
                 $("body").append(actionmenu);
@@ -83,10 +85,6 @@
                 $(window).bind("click",$.proxy(function(event) { this.trigger("leave"); }, this));
             }           
 
-            this.render_current_action = function() {
-                var el = $(this).find(".option");
-                if( this.options.current_action ) { el.attr("status", this.options.current_action ); }
-            }
 
             //initialize
             $(this).addClass("actionmenu actionmenu_button");
@@ -94,10 +92,16 @@
                     "<div href='#' class='option'>Actions</div>" +
                     "</span>");
 
+            //show the current action in the action button
+            this.render_current_action = function() {
+                $(this).find(".option").attr("status", this.options.current_action ); 
+            }
             this.render_current_action();
             $(this).bind("actionmenuchanged", $.proxy(this.render_current_action, this));
 
             $(this).bind('click', $.proxy(this.launch_menu, this));
+
+            $(this).data("actionmenu", this);
         }
     });
 })(jQuery);

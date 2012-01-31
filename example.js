@@ -41,4 +41,7 @@ $(document).ready(function() {
         "actions": actions,
         "current_action": "active_visible"
     });
+    $("#menu").bind("actionmenuchanged", function(e, action) {
+        console.log("Action clicked", action);
+    });
 });
