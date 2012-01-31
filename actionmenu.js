@@ -49,14 +49,18 @@ function launch_menu(item, data) {
     //the status_list_bottom_pos is calculated relative to the top of the window, not the document
     //i.e. the scrollbar position should not affect the status_list_bottom_pos value
     //add 5px buffer
-    /*var status_list_bottom_pos = $(status_list).height() + $(status_list).offset().top - $(window).scrollTop() + 5;*/
-    /*var num_offscreen_pixels = status_list_bottom_pos - $(window).height();*/
-    /*if( num_offscreen_pixels > 0 ) {*/
-    /*top_pos -= num_offscreen_pixels;*/
-    /*if( (top_pos - $(window).scrollTop()) > 0 ) {*/
-    /*status_list.css("top", top_pos);*/
-    /*}*/
-    /*}*/
+    var status_list_bottom_pos = $(status_list).height() + $(status_list).offset().top - $(window).scrollTop() + 5;
+    var num_offscreen_pixels = status_list_bottom_pos - $(window).height();
+    if( num_offscreen_pixels > 0 ) {
+        top_pos -= num_offscreen_pixels;
+
+        //ensure that top does not go off screen
+        if( (top_pos - $(window).scrollTop()) < 0 ) {
+            top_pos = $(window).scrollTop();
+        }
+
+        status_list.css("top", top_pos);
+    }
 
     /*status = item.get("status");*/
     /*status_list.find("[status=" + status + "]").addClass('current');*/
