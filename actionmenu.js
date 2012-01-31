@@ -5,14 +5,14 @@
             //set up default options
             this.options = $.extend({
                 "actions": {},
-                "el": this,
                 "current_action": undefined
             }, options);
+
 
             this.launch_menu = function(e) {
                 e.preventDefault();
 
-                var bt_el = $(this.options.el);//.find("div.option");
+                var bt_el = $(this).find("div.option");
 
                 //removes any other status lists
                 $(".status_list").remove();
@@ -114,6 +114,13 @@
 
                 /*item.trigger("status_list_added");*/
             }           
+
+            this.initialize = function() {
+                $(this).html("<span class='" + (this.options.actions.length ? "modifiable" : "") +"'>" +
+                        "<div href='#' class='option' status='" + this.options.current_action + "'>" + (this.options.current_action || "Actions") + "</div>" +
+                        "</span>");
+            };
+            this.initialize();
 
             $(this).bind('click', $.proxy(this.launch_menu, this));
         }
