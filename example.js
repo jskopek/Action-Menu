@@ -29,10 +29,10 @@ var actions = [{
 }, {
     "group": "Actions",
     "items": [
-        { "id": "Preview" },
-        { "id": "Answers" },
-        { "id": "Edit" },
-        { "id": "Duplicate" }
+        { "id": "Preview", "instant": true },
+        { "id": "Answers", "instant": true },
+        { "id": "Edit", "instant": true },
+        { "id": "Duplicate", "instant": true }
     ]
 }]
 

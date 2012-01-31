@@ -33,7 +33,7 @@
                                     "<% _.each(action_groups, function(group) { %>" +
                                         "<div class='group'><%= group.group %></div>" +
                                         "<% _.each(group.items, function(item) { %>" +
-                                            "<div href='#' class='option <%= item.id %>' status='<%= item.id %>'><%= item.title || item.id %><% if( item.description ) { %><span>- <%= item.description %></span><% } %></div>" +
+                                            "<div href='#' class='option <%= item.id %>' group='<%= group.group %>' instant='<%= item.instant %>' status='<%= item.id %>'><%= item.title || item.id %><% if( item.description ) { %><span>- <%= item.description %></span><% } %></div>" +
                                         "<% }); %>" +
                                     "<% }); %>" +
                         "</div>" +
@@ -74,9 +74,14 @@
                     e.preventDefault();
                     e.stopPropagation();
 
-                    var action = $(e.currentTarget).attr("status");
-                    this.options.current_action = action;
-                    this.trigger("actionmenuchanged", action);
+                    var el = $(e.currentTarget);
+                    var action = el.attr("status");
+
+                    if( !el.attr("instant") ) {
+                        this.options.current_action = action;
+                    }
+
+                    this.trigger("actionmenuchanged", action, el);
 
                     this.trigger("leave");
                 }, this));
