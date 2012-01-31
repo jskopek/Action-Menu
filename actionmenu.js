@@ -116,6 +116,7 @@
             }           
 
             this.initialize = function() {
+                $(this).addClass("actionmenubutton");
                 $(this).html("<span class='" + (this.options.actions.length ? "modifiable" : "") +"'>" +
                         "<div href='#' class='option' status='" + this.options.current_action + "'>" + (this.options.current_action || "Actions") + "</div>" +
                         "</span>");

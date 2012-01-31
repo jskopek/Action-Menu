@@ -1,33 +1,33 @@
 /* tree status */
-.status .options {
+.actionmenubutton .options {
 	display: none;
 }
 .status_list .options {
     width: 100%;
 }
-.status div.option {
+.actionmenubutton div.option {
 	background-repeat: no-repeat;
 }
-.status span div.option {
+.actionmenubutton span div.option {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
 	text-indent: 8000px;
 }
-.status span.modifiable:hover {
+.actionmenubutton span.modifiable:hover {
 	background-color: #cfcecd;
 }
-.status span.modifiable {	
+.actionmenubutton span.modifiable {	
 	display: inline-block;
 	border: 1px solid #aaa;
 	border: 1px solid #aaa;	
 	border-bottom: none;
 	border-top: none;
 	padding: 0 10px 0 2px;
-	background: center right no-repeat url(../../images/edumacation/status_picker.png);
+	background: center right no-repeat url(images/status_picker.png);
 	
 }
-.status span.modifiable,
+.actionmenubutton span.modifiable,
 .status_list .option {
 	cursor: pointer;
 }
@@ -51,7 +51,7 @@
 	text-indent: -3000px;
 	width: 16px;
 	height: 16px;
-	background-image: url(../../images/edumacation/bt_close.png);
+	background-image: url(images/bt_close.png);
 }
 .status_list div.option  {
 	background-repeat: no-repeat;
@@ -104,49 +104,49 @@
 .status .option,
 .status_list .option,
 .thm_tree_table_sec_icon {
-	background-image: url(../../images/edumacation/status_inactive.png);
+	background-image: url(images/status_inactive.png);
 }
 .status_list .option[status='visible'],
 .status .option[status='visible'],
 .thm_tree_table_sec_icon[status='visible'] {
-	background-image: url(../../images/edumacation/status_visible.png);
+	background-image: url(images/status_visible.png);
 }
 .status_list .option[status='active_visible'],
 .status .option[status='active_visible'],
 .thm_tree_table_sec_icon[status='active_visible'] {
-	background-image: url(../../images/edumacation/status_active_visible_7.png);
+	background-image: url(images/status_active_visible_7.png);
 }
 .status_list .duplicate {
-	background-image: url(../../images/edumacation/status_duplicate.png);
+	background-image: url(images/status_duplicate.png);
 }
 .status_list .answers {
-	background-image: url(../../images/edumacation/status_answers.png);
+	background-image: url(images/status_answers.png);
 }
 .status_list .preview {
-	background-image: url(../../images/edumacation/thm_tree/icon_item.png);
+	background-image: url(images/thm_tree/icon_item.png);
 }
 .status .option[status='active'],
 .status_list .option[status='active'],
 .thm_tree_table_sec_icon[status='active'] {
-	background-image: url(../../images/edumacation/status_active.png);
+	background-image: url(images/status_active.png);
 }
 .status .option[status='inactive'],
 .status_list .option[status='inactive'],
 .thm_tree_table_sec_icon[status='inactive'] {
-	background-image: url(../../images/edumacation/status_inactive.png);
+	background-image: url(images/status_inactive.png);
 }
 .status_list .option[status='review'],
 .status .option[status='review'],
 .thm_tree_table_sec_icon[status='review']
  {
-	background-image: url(../../images/edumacation/status_reviewable.png);
+	background-image: url(images/status_reviewable.png);
 }
 .status .option[status='mixed'],
 .thm_tree_table_sec_icon[status='mixed'] {
-	background-image: url(../../images/edumacation/status_mixed.png);
+	background-image: url(images/status_mixed.png);
 }
 .status .option[status='password'] {
-	background-image: url(../../images/edumacation/status_password.png);
+	background-image: url(images/status_password.png);
 }
 .status .option[status='none'] {
 	background-image: none;
@@ -154,28 +154,28 @@
 
 .status .loading,
 .thm_tree_table_sec_icon.loading {
-	background-image: url(../../images/edumacation/status_loading.gif) !important;	
+	background-image: url(images/status_loading.gif) !important;	
 }
 .thm_tree > div.item[answered='true'] .status div[status='review'] {
-	background-image: url(../../images/edumacation/status_review_answered.png);
+	background-image: url(images/status_review_answered.png);
 }
 .thm_tree > div.item[answered='true'] .status div[status='active_visible'],
 .thm_tree > div.item[answered='true'] .status div[status='active'] {
-	background-image: url(../../images/edumacation/status_active_answered.png);
+	background-image: url(images/status_active_answered.png);
 }
 .status_list .edit {
-	background-image: url(../../images/edumacation/status_edit.png);
+	background-image: url(images/status_edit.png);
 }
 .status_list .delete {
-	background-image: url(../../images/edumacation/status_delete.png);
+	background-image: url(images/status_delete.png);
 }
 .status .option[status='on'],
 .status_list .option[status='on'],
 .thm_tree_table_sec_icon[status='on'] {
-	background-image: url(../../images/edumacation/on.png);
+	background-image: url(images/on.png);
 }
 .status .option[status='off'],
 .status_list .option[status='off'],
 .thm_tree_table_sec_icon[status='off'] {
-	background-image: url(../../images/edumacation/off.png);
+	background-image: url(images/off.png);
 }
