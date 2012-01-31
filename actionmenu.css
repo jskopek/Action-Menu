@@ -1,1 +1,181 @@
+/* tree status */
+.status .options {
+	display: none;
+}
+.status_list .options {
+    width: 100%;
+}
+.status div.option {
+	background-repeat: no-repeat;
+}
+.status span div.option {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	text-indent: 8000px;
+}
+.status span.modifiable:hover {
+	background-color: #cfcecd;
+}
+.status span.modifiable {	
+	display: inline-block;
+	border: 1px solid #aaa;
+	border: 1px solid #aaa;	
+	border-bottom: none;
+	border-top: none;
+	padding: 0 10px 0 2px;
+	background: center right no-repeat url(../../images/edumacation/status_picker.png);
+	
+}
+.status span.modifiable,
+.status_list .option {
+	cursor: pointer;
+}
 
+/* status_list */
+.status_list {
+	position: absolute;
+	z-index: 10000;
+	background: #fdfdfd;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-box-shadow: 2px 2px 4px #aaa;
+	-moz-box-shadow: 2px 2px 4px #aaa;
+	border: 1px solid #aaa;
+    width: 300px;
+}
+.status_list span.close {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	text-indent: -3000px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../../images/edumacation/bt_close.png);
+}
+.status_list div.option  {
+	background-repeat: no-repeat;
+	display: block;
+	text-align: left;
+	padding: 4px 28px;
+	padding-right: 10px;
+	border-bottom: 1px solid #aaa;
+	background-position: 5px center;
+	text-decoration: none;
+	color: #000;
+}
+.status_list div.option span {
+	font-size: 0.9em;
+	color: #787878;
+	padding-left: 4px;
+}
+.status_list .group:first-child {
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+}
+.status_list .group {
+	padding: 5px;
+	background: #bababa;
+	background: -webkit-gradient(linear, center top, center bottom, from(#e2e2e2), to(#bababa));
+	background: -moz-linear-gradient(top, #e2e2e2, #bababa);
+	color: #7a7a7a;
+	font-weight: normal;
+	font-family: Futura;
+}
+.status_list div.option.current {
+	background-color: #c2daed;
+}
+.status_list div.option:hover {
+	background-color: #cee7fb;
+}
+
+/* status icons */
+.thm_tree_table_sec_icon[status='active_visible'],
+.thm_tree_table_sec_icon[status='active'],
+.thm_tree_table_sec_icon[status='inactive'],
+.thm_tree_table_sec_icon[status='review'],
+.thm_tree_table_sec_icon[status='mixed'] {
+	text-indent: -5000px;
+	height: 16px;
+	width: 16px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.status .option,
+.status_list .option,
+.thm_tree_table_sec_icon {
+	background-image: url(../../images/edumacation/status_inactive.png);
+}
+.status_list .option[status='visible'],
+.status .option[status='visible'],
+.thm_tree_table_sec_icon[status='visible'] {
+	background-image: url(../../images/edumacation/status_visible.png);
+}
+.status_list .option[status='active_visible'],
+.status .option[status='active_visible'],
+.thm_tree_table_sec_icon[status='active_visible'] {
+	background-image: url(../../images/edumacation/status_active_visible_7.png);
+}
+.status_list .duplicate {
+	background-image: url(../../images/edumacation/status_duplicate.png);
+}
+.status_list .answers {
+	background-image: url(../../images/edumacation/status_answers.png);
+}
+.status_list .preview {
+	background-image: url(../../images/edumacation/thm_tree/icon_item.png);
+}
+.status .option[status='active'],
+.status_list .option[status='active'],
+.thm_tree_table_sec_icon[status='active'] {
+	background-image: url(../../images/edumacation/status_active.png);
+}
+.status .option[status='inactive'],
+.status_list .option[status='inactive'],
+.thm_tree_table_sec_icon[status='inactive'] {
+	background-image: url(../../images/edumacation/status_inactive.png);
+}
+.status_list .option[status='review'],
+.status .option[status='review'],
+.thm_tree_table_sec_icon[status='review']
+ {
+	background-image: url(../../images/edumacation/status_reviewable.png);
+}
+.status .option[status='mixed'],
+.thm_tree_table_sec_icon[status='mixed'] {
+	background-image: url(../../images/edumacation/status_mixed.png);
+}
+.status .option[status='password'] {
+	background-image: url(../../images/edumacation/status_password.png);
+}
+.status .option[status='none'] {
+	background-image: none;
+}
+
+.status .loading,
+.thm_tree_table_sec_icon.loading {
+	background-image: url(../../images/edumacation/status_loading.gif) !important;	
+}
+.thm_tree > div.item[answered='true'] .status div[status='review'] {
+	background-image: url(../../images/edumacation/status_review_answered.png);
+}
+.thm_tree > div.item[answered='true'] .status div[status='active_visible'],
+.thm_tree > div.item[answered='true'] .status div[status='active'] {
+	background-image: url(../../images/edumacation/status_active_answered.png);
+}
+.status_list .edit {
+	background-image: url(../../images/edumacation/status_edit.png);
+}
+.status_list .delete {
+	background-image: url(../../images/edumacation/status_delete.png);
+}
+.status .option[status='on'],
+.status_list .option[status='on'],
+.thm_tree_table_sec_icon[status='on'] {
+	background-image: url(../../images/edumacation/on.png);
+}
+.status .option[status='off'],
+.status_list .option[status='off'],
+.thm_tree_table_sec_icon[status='off'] {
+	background-image: url(../../images/edumacation/off.png);
+}
