@@ -93,13 +93,14 @@
 
             //initialize
             $(this).addClass("actionmenu actionmenu_button");
-            $(this).html("<span class='" + (this.options.actions.length ? "modifiable" : "") +"'>" +
-                    "<div href='#' class='option'>Actions</div>" +
-                    "</span>");
+            if( this.options.actions.length ) {
+                $(this).addClass("modifiable");
+            }
+            $(this).html("<div href='#' class='option'>Actions</div>");
 
             //show the current action in the action button
             this.render_current_action = function() {
-                $(this).find(".option").attr("status", this.options.current_action ); 
+                $(this).children("span").find(".option").attr("status", this.options.current_action );
             }
             this.render_current_action();
             $(this).bind("actionmenuchanged", $.proxy(this.render_current_action, this));
