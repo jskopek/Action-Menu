@@ -81,6 +81,7 @@
                         this.options.current_action = action;
                     }
 
+                    this.trigger("actionmenuclicked", action, el);
                     this.trigger("actionmenuchanged", action, el);
 
                     this.trigger("leave");
@@ -95,17 +96,17 @@
             $(this).addClass("actionmenu actionmenu_button");
             if( this.options.actions.length ) {
                 $(this).addClass("modifiable");
+                $(this).bind('click', $.proxy(this.launch_menu, this));
             }
             $(this).html("<div href='#' class='option'>Actions</div>");
 
             //show the current action in the action button
             this.render_current_action = function() {
-                $(this).children("span").find(".option").attr("status", this.options.current_action );
+                $(this).children(".option").attr("status", this.options.current_action );
             }
             this.render_current_action();
             $(this).bind("actionmenuchanged", $.proxy(this.render_current_action, this));
 
-            $(this).bind('click', $.proxy(this.launch_menu, this));
 
             $(this).data("actionmenu", this);
         }
